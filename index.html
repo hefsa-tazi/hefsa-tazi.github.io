@@ -8,8 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Newsreader:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  /* Règle pour la gestion bilingue FR/EN avec le style Bourgogne */
-  html[lang=fr] [lang=en], html[lang=en] [lang=fr] { display: none !important; }
+  /* Règle essentielle pour masquer la langue non sélectionnée */
+  html[lang=fr] [lang=en], 
+  html[lang=en] [lang=fr] { 
+    display: none !important; 
+  }
 </style>
 </head>
 <body>
@@ -18,7 +21,7 @@
   <div class="container">
     <nav>
       <span class="logo" style="font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 600; color: var(--ink);">HTA</span>
-      <div class="sw" role="group" aria-label="Langue / Language" style="display: flex; gap: 4px;">
+      <div class="sw" role="group" aria-label="Langue / Language">
         <button type="button" class="lang-toggle" data-l="fr" aria-pressed="true">FR</button>
         <button type="button" class="lang-toggle" data-l="en" aria-pressed="false">EN</button>
       </div>
@@ -49,10 +52,10 @@
         </ul>
       </div>
 
+      <!-- PHOTO : assurez-vous que photo.png est au même endroit que index.html -->
       <div class="profile-frame">
         <div class="profile-glow"></div>
-        <!-- Remplacez l'URL ci-dessous par le chemin de votre photo si vous en avez une, ex: photo.jpg -->
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Portrait" class="profile-photo">
+        <img src="photo.png" alt="Photo de profil" class="profile-photo">
         <div class="profile-caption">
           <span class="hero-dot"></span>
           <span>DISPONIBLE</span>
@@ -113,24 +116,4 @@
 
     <details class="case">
       <summary>
-        <h3 lang="fr">Un MDM et des portails sur mesure pour une collectivité</h3>
-        <h3 lang="en">An MDM and tailor-made portals for a local authority</h3>
-        <p class="when" lang="fr">Département · MDM et portails</p>
-        <p class="when" lang="en">Local authority · MDM and portals</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Blueway ESB/MDM</li></ul>
-        <ul lang="fr">
-          <li>Mise en place du MDM sur Blueway pour les données de référence.</li>
-          <li>Développement de portails sur mesure pour les équipes.</li>
-        </ul>
-        <ul lang="en">
-          <li>Set up the MDM on Blueway for reference data.</li>
-          <li>Developed tailor-made portals for the teams.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Migration
+        <h3 lang="fr">Un MDM et des portails sur
