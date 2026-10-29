@@ -1,0 +1,273 @@
+/* =========================================
+   PORTFOLIO DATA ENGINEER — BURGUNDY THEME
+   ========================================= */
+
+/* 1. COULEURS ET VARIABLES */
+:root {
+  color-scheme: light;
+
+  --bg: #F8F1F2;
+  --surface: #FFFFFF;
+  --ink: #292127;
+  --muted: #75636B;
+  --line: #E8D8DD;
+
+  --accent: #641E32;
+  --accent-hover: #8F3049;
+  --accent-light: #F3E2E7;
+
+  --coral: #D9A0A9;
+  --mint: #EAD3DB;
+  --navy: #292127;
+
+  --gradient: linear-gradient(
+    135deg,
+    #F3E2E7 0%,
+    #E7C0CC 50%,
+    #F8F1F2 100%
+  );
+
+  --gradient-accent: linear-gradient(
+    110deg,
+    #641E32 0%,
+    #B34D68 100%
+  );
+
+  --shadow-sm: 0 4px 14px rgba(100, 30, 50, 0.06);
+  --shadow-md: 0 12px 32px rgba(100, 30, 50, 0.10);
+  --shadow-lg: 0 20px 50px rgba(100, 30, 50, 0.15);
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+
+  --container: 1040px;
+}
+
+/* 2. RESET ET BASE */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 30px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background:
+    radial-gradient(
+      circle at 95% 3%,
+      rgba(217, 160, 169, 0.16),
+      transparent 25rem
+    ),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Figtree", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+/* 3. CONTENEUR PRINCIPAL */
+main,
+.container,
+.page {
+  width: min(var(--container), calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* Si le site utilise directement main comme conteneur */
+main {
+  padding-bottom: 40px;
+}
+
+/* 4. EN-TÊTE ET NAVIGATION */
+header {
+  position: relative;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+nav a {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+nav button,
+.lang-toggle,
+button.lang-toggle {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: var(--surface);
+  color: var(--accent);
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav button:hover,
+.lang-toggle:hover,
+button.lang-toggle:hover {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+/* 5. HERO — PRÉSENTATION (Corrigé pour éviter la coupure du texte) */
+.hero {
+  position: relative;
+  padding: 76px 0 68px;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 25px;
+  left: -50px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: var(--coral);
+  opacity: 0.12;
+  filter: blur(55px);
+  pointer-events: none;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) 220px;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-text {
+  min-width: 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-dot {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-hover);
+  box-shadow: 0 0 0 5px rgba(143, 48, 73, 0.12);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+h1 {
+  max-width: 100%;
+  margin: 0 0 24px;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.gradient-text {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.lead {
+  max-width: 100%;
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+/* 6. INFORMATIONS RAPIDES */
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.facts li {
+  padding: 8px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
