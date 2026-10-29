@@ -5,115 +5,293 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>HTA – Data Engineer / MDM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Newsreader:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Newsreader:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  /* Règle essentielle pour masquer la langue non sélectionnée */
-  html[lang=fr] [lang=en], 
-  html[lang=en] [lang=fr] { 
-    display: none !important; 
-  }
+:root{--bg:#F2F5F6;--surface:#FFFFFF;--ink:#1E2A30;--muted:#55656D;--line:#DCE3E6;--accent:#2B6C72;--chip:#E4EEEF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11181B;--surface:#192226;--ink:#E3EAEC;--muted:#9AABB2;--line:#2A373C;--accent:#82C3C7;--chip:#233236;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#11181B;--surface:#192226;--ink:#E3EAEC;--muted:#9AABB2;--line:#2A373C;--accent:#82C3C7;--chip:#233236;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+html[lang=fr] [lang=en],html[lang=en] [lang=fr]{display:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+header.bar{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font:600 20px Newsreader,Georgia,serif;letter-spacing:.02em}
+.sw{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.sw button{border:0;background:none;color:var(--muted);font:500 14px Figtree,sans-serif;padding:6px 14px;cursor:pointer}
+.sw button[aria-pressed=true]{background:var(--accent);color:var(--bg)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hero{padding:56px 0 40px}
+h1{font:600 clamp(34px,6vw,50px)/1.12 Newsreader,Georgia,serif;margin:0 0 18px;letter-spacing:-.01em}
+.lead{font-size:19px;color:var(--muted);margin:0 0 24px;max-width:60ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.facts li,.chips li{background:var(--chip);border-radius:999px;padding:3px 12px;font-size:14px}
+h2{font:600 28px Newsreader,Georgia,serif;margin:0 0 20px}
+section{padding:36px 0;border-top:1px solid var(--line)}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:14px}.case summary{list-style:none;cursor:pointer;padding:20px 54px 20px 26px;position:relative;border-radius:14px}.case summary::-webkit-details-marker{display:none}.case summary::after{content:"";position:absolute;right:24px;top:28px;width:8px;height:8px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);transition:transform .2s}.case[open] summary::after{transform:rotate(-135deg);top:32px}.case summary:hover h3{color:var(--accent)}.case .body{padding:16px 26px 8px;border-top:1px solid var(--line)}@media (prefers-reduced-motion:reduce){.case summary::after{transition:none}}
+.case h3{font:600 21px/1.3 Newsreader,Georgia,serif;margin:0 0 2px}
+.when{color:var(--muted);font-size:14px;margin:0}
+.case p{margin:0 0 12px}
+.case b{color:var(--accent);font-weight:600}
+.case ul{margin:0 0 16px;padding-left:20px}
+.case li{margin-bottom:4px}
+.case .chips{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:10px 0 0;list-style:none}.case .chips li{margin:0}
+.chips li{font-size:13px;padding:2px 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.grid h3{font:600 17px Figtree,sans-serif;margin:0 0 8px}
+.grid p{margin:0;color:var(--muted);font-size:15.5px}
+footer{padding:36px 0 56px;border-top:1px solid var(--line);color:var(--muted)}
+footer a{color:var(--accent)}
+@media (max-width:520px){.case summary{padding:18px 46px 18px 20px}.case .body{padding:14px 20px 6px}.hero{padding-top:32px}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="container">
-    <nav>
-      <span class="logo" style="font-family: 'Newsreader', Georgia, serif; font-size: 22px; font-weight: 600; color: var(--ink);">HTA</span>
-      <div class="sw" role="group" aria-label="Langue / Language">
-        <button type="button" class="lang-toggle" data-l="fr" aria-pressed="true">FR</button>
-        <button type="button" class="lang-toggle" data-l="en" aria-pressed="false">EN</button>
-      </div>
-    </nav>
+<div class="wrap">
+<header class="bar">
+  <span class="logo">HTA</span>
+  <div class="sw" role="group" aria-label="Langue / Language">
+    <button type="button" data-l="fr" aria-pressed="true">FR</button>
+    <button type="button" data-l="en" aria-pressed="false">EN</button>
   </div>
 </header>
 
-<main class="container">
-  <div class="hero">
-    <div class="hero-layout">
-      <div class="hero-text">
-        <div class="eyebrow">
-          <span class="hero-dot"></span>
-          <span lang="fr">Data Engineer & MDM Consultant</span>
-          <span lang="en">Data Engineer & MDM Consultant</span>
-        </div>
-        
-        <h1 lang="fr">Data Engineer, spécialisé en <span class="gradient-text">MDM et intégration</span> de données</h1>
-        <h1 lang="en">Data Engineer specialised in <span class="gradient-text">MDM and data integration</span></h1>
-        
-        <p class="lead" lang="fr">J’aide les organisations à structurer, fiabiliser et gouverner leurs données de référence : modélisation, flux ETL, migration de plateformes et automatisation des déploiements.</p>
-        <p class="lead" lang="en">I help organisations structure, secure and govern their reference data: modelling, ETL pipelines, platform migrations and deployment automation.</p>
-        
-        <ul class="facts">
-          <li lang="fr">5 ans d’expérience</li><li lang="en">5 years of experience</li>
-          <li lang="fr">Ingénieur, Polytech Marseille</li><li lang="en">Engineer, Polytech Marseille</li>
-          <li lang="fr">Français, anglais (TOEIC 825), arabe</li><li lang="en">French, English (TOEIC 825), Arabic</li>
-        </ul>
-      </div>
+<main>
+<div class="hero">
+  <h1 lang="fr">Data Engineer, spécialisé en MDM et intégration de données</h1>
+  <h1 lang="en">Data Engineer specialised in MDM and data integration</h1>
+  <p class="lead" lang="fr">J’aide les organisations à structurer, fiabiliser et gouverner leurs données de référence : modélisation, flux ETL, migration de plateformes et automatisation des déploiements.</p>
+  <p class="lead" lang="en">I help organisations structure, secure and govern their reference data: modelling, ETL pipelines, platform migrations and deployment automation.</p>
+  <ul class="facts">
+    <li lang="fr">5 ans d’expérience</li><li lang="en">5 years of experience</li>
+    <li lang="fr">Ingénieur, Polytech Marseille</li><li lang="en">Engineer, Polytech Marseille</li>
+    <li lang="fr">Français, anglais (TOEIC 825), arabe</li><li lang="en">French, English (TOEIC 825), Arabic</li>
+  </ul>
+</div>
 
-      <!-- PHOTO : assurez-vous que photo.png est au même endroit que index.html -->
-      <div class="profile-frame">
-        <div class="profile-glow"></div>
-        <img src="photo.png" alt="Photo de profil" class="profile-photo">
-        <div class="profile-caption">
-          <span class="hero-dot"></span>
-          <span>DISPONIBLE</span>
-        </div>
-      </div>
+<section>
+  <h2 lang="fr">Études de cas</h2><h2 lang="en">Case studies</h2>
+
+  <details class="case"><summary><h3 lang="fr">Faire dialoguer les applications d’une école de commerce</h3>
+    <h3 lang="en">Connecting the applications of a business school</h3>
+    <p class="when" lang="fr">École de commerce · Data Cloud · depuis avril 2026, à distance</p>
+    <p class="when" lang="en">Business school · Data Cloud · since April 2026, remote</p>
+    <ul class="chips"><li>Talend ESB</li><li>Talend Cloud (TMC)</li><li>Salesforce</li><li>SQL Server</li><li>Jira</li></ul></summary>
+    <div class="body">
+    <p lang="fr"><b>Contexte.</b> Intégration des données des grands domaines métiers : étudiants, scolarité, finance, contrats fournisseurs, conventions partenaires et cours.</p>
+    <p lang="en"><b>Context.</b> Data integration across the main business domains: students, academic records, finance, supplier contracts, partner agreements and courses.</p>
+    <ul lang="fr">
+      <li>Développement et maintenance des flux sur Talend ESB et Talend Cloud, entre Salesforce, SQL Server et d’autres applications.</li>
+      <li>Déploiement sur 5 environnements (dev à production), résolution d’incidents et optimisation des performances.</li><li>Conception et optimisation des interfaces entre les applications du système d’information.</li><li>Suivi des développements et des livraisons via Jira.</li>
+    </ul>
+    <ul lang="en">
+      <li>Development and maintenance of flows on Talend ESB and Talend Cloud, between Salesforce, SQL Server and other applications.</li>
+      <li>Deployment across 5 environments (dev to production), incident resolution and performance tuning.</li><li>Design and optimisation of the interfaces between the information system’s applications.</li><li>Tracking of developments and deliveries in Jira.</li>
+    </ul>
     </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Des téléservices pour les usagers, sur Blueway</h3>
+    <h3 lang="en">Online public services for citizens, on Blueway</h3>
+    <p class="when" lang="fr">Métropole · Développement de portails</p>
+    <p class="when" lang="en">Metropolitan authority · Portal development</p>
+    <ul class="chips"><li>Blueway</li></ul></summary>
+    <div class="body">
+    <ul lang="fr">
+      <li>Réalisation de portails Blueway intégrant les formulaires de la gestion de la relation usager (GRU).</li>
+      <li>Développement de téléservices pour les usagers.</li>
+    </ul>
+    <ul lang="en">
+      <li>Built Blueway portals integrating citizen relationship management (GRU) forms.</li>
+      <li>Developed online services for citizens.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Un MDM et des portails sur mesure pour une collectivité</h3>
+    <h3 lang="en">An MDM and tailor-made portals for a local authority</h3>
+    <p class="when" lang="fr">Département · MDM et portails</p>
+    <p class="when" lang="en">Local authority · MDM and portals</p>
+    <ul class="chips"><li>Blueway ESB/MDM</li></ul></summary>
+    <div class="body">
+    <ul lang="fr">
+      <li>Mise en place du MDM sur Blueway pour les données de référence.</li>
+      <li>Développement de portails sur mesure pour les équipes.</li>
+    </ul>
+    <ul lang="en">
+      <li>Set up the MDM on Blueway for reference data.</li>
+      <li>Developed tailor-made portals for the teams.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Migration d’un référentiel public vers Blueway Phoenix</h3>
+    <h3 lang="en">Migrating a public reference repository to Blueway Phoenix</h3>
+    <p class="when" lang="fr">Établissement public · Consultant Data / MDM · depuis 2025</p>
+    <p class="when" lang="en">French public body · Data / MDM consultant · since 2025</p>
+    <ul class="chips"><li>Blueway ESB/MDM</li></ul></summary>
+    <div class="body">
+    <p lang="fr"><b>Contexte.</b> Moderniser le système d’information pour mieux structurer, historiser et gouverner les données de référence.</p>
+    <p lang="en"><b>Context.</b> Modernise the information system to better structure, version and govern reference data.</p>
+    <ul lang="fr">
+      <li>Analyse des écarts entre l’existant et la solution cible, rédaction de la spécification technique détaillée.</li>
+      <li>Historisation par année, gestion des dépendances parent-enfant, activation automatique par période de validité.</li><li>Workflow de validation, règles de gestion et contrôles d’unicité.</li><li>Prototypes d’écrans pour valider les besoins avec les métiers, intégration des 3 flux (ingestion, transformation, chargement).</li>
+      
+      
+    </ul>
+    <ul lang="en">
+      <li>Gap analysis between the existing system and the target solution, detailed technical specification.</li>
+      <li>Year-based versioning, parent-child dependencies, automatic activation by validity period.</li><li>Validation workflow, business rules and uniqueness checks.</li><li>Screen prototypes to validate needs with business teams, 3 data flows integrated (ingestion, transformation, loading).</li>
+      
+      
+    </ul>
+    </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Passer d’un MDM coûteux à une plateforme plus agile</h3>
+    <h3 lang="en">Moving from a costly MDM to a more agile platform</h3>
+    <p class="when" lang="fr">Groupe de l’événementiel · Consultant Data / MDM · 2024 – 2025</p>
+    <p class="when" lang="en">Events group · Data / MDM consultant · 2024 – 2025</p>
+    <ul class="chips"><li>Blueway</li><li>Semarchy XDM</li><li>Talend</li><li>Keycloak</li><li>Jira</li></ul></summary>
+    <div class="body">
+    <p lang="fr"><b>Contexte.</b> Le groupe quittait Semarchy XDM, robuste mais coûteux et peu flexible, pour Blueway, afin de réduire les coûts et d’aligner la donnée sur les processus métier.</p>
+    <p lang="en"><b>Context.</b> The group was leaving Semarchy XDM, robust but costly and rigid, for Blueway, to cut costs and align data with business processes.</p>
+    <ul lang="fr">
+      <li>Conception de l’architecture d’intégration et développement des flux entre sources et destinations.</li><li>Recette fonctionnelle d’un projet Odoo, avec validation des échanges bidirectionnels par API.</li><li>Gestion des droits via Keycloak, écrans personnalisés selon les retours utilisateurs.</li>
+      
+      
+      <li>Documentation complète, guides de bonnes pratiques, formation de deux collaborateurs et encadrement d’une alternante.</li>
+    </ul>
+    <ul lang="en">
+      <li>Integration architecture design and development of flows between sources and destinations.</li><li>Functional acceptance of an Odoo project, with bidirectional API exchanges validated.</li><li>Access management through Keycloak, custom screens shaped by user feedback.</li>
+      
+      
+      <li>Full documentation, best-practice guides, training of two colleagues and mentoring of a work-study student.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Industrialiser les déploiements ETL avec une chaîne CI/CD</h3>
+    <h3 lang="en">Industrialising ETL deployments with a CI/CD pipeline</h3>
+    <p class="when" lang="fr">Centre de production d’une ESN · Consultant Data / DevOps · 2025</p>
+    <p class="when" lang="en">IT services production centre · Data / DevOps consultant · 2025</p>
+    <ul class="chips"><li>Talaxie</li><li>Talend Open Studio</li><li>GitLab CI/CD</li><li>Rundeck</li></ul></summary>
+    <div class="body">
+    <p lang="fr"><b>Contexte.</b> Un POC pour évaluer Talaxie face à Talend Open Studio : compatibilité avec les pratiques DevOps existantes et alternatives aux fonctionnalités de Talend.</p>
+    <p lang="en"><b>Context.</b> A proof of concept to evaluate Talaxie against Talend Open Studio: compatibility with existing DevOps practices and alternatives to Talend features.</p>
+    <ul lang="fr">
+      
+      <li>Migration de jobs ETL vers Talaxie.</li><li>Chaîne CI/CD automatisée et généralisée, déploiement sur Rundeck avec désactivation automatique des anciennes versions.</li>
+      <li>Moins de temps manuel en mise en production, base réutilisable pour les futurs projets.</li>
+    </ul>
+    <ul lang="en">
+      
+      <li>ETL job migration to Talaxie.</li><li>Automated, generalised CI/CD pipeline, deployment to Rundeck with automatic deactivation of old versions.</li>
+      <li>Less manual work at release time, reusable foundation for future projects.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Une source unique de données pour piloter la production</h3>
+    <h3 lang="en">A single source of truth to steer production</h3>
+    <p class="when" lang="fr">Fabricant de cartes électroniques · Consultant Data / MDM · 2023</p>
+    <p class="when" lang="en">Electronics manufacturer · Data / MDM consultant · 2023</p>
+    <ul class="chips"><li>Talend Open Studio</li><li>Qlik Sense</li></ul></summary>
+    <div class="body">
+    <p lang="fr"><b>Contexte.</b> Deux projets en parallèle : suivi des ressources humaines et optimisation des processus de production.</p>
+    <p lang="en"><b>Context.</b> Two parallel projects: human resources tracking and production process optimisation.</p>
+    <ul lang="fr">
+      <li>Flux ETL nettoyant les données brutes issues de SAGE et 4D, chargées dans un entrepôt décisionnel.</li><li>Automatisation de l’intégration, tests et appui à la recette métier.</li>
+      
+      <li>Tableaux de bord interactifs Qlik Sense pour les équipes.</li>
+    </ul>
+    <ul lang="en">
+      <li>ETL flows cleaning raw data from SAGE and 4D, loaded into a decision-support warehouse.</li><li>Integration automation, testing and support for business acceptance.</li>
+      
+      <li>Interactive Qlik Sense dashboards for the teams.</li>
+    </ul>
+    </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Migrer les données vers un CRM sur mesure, dans le cloud</h3>
+    <h3 lang="en">Migrating data into a tailor-made CRM, in the cloud</h3>
+    <p class="when" lang="fr">Groupe de protection sociale · Data Engineer Cloud · déc. 2022 – oct. 2023</p>
+    <p class="when" lang="en">Social protection group · Cloud Data Engineer · Dec 2022 – Oct 2023</p>
+    <ul class="chips"><li>Azure Data Factory</li><li>Synapse</li><li>Qlik Sense</li><li>Jira</li></ul></summary>
+    <div class="body">
+    <p lang="fr"><b>Contexte.</b> Création d’un CRM sur mesure pour les besoins métiers, avec une migration fluide des données depuis l’ancien système d’information.</p>
+    <p lang="en"><b>Context.</b> Building a tailor-made CRM for business needs, with a smooth data migration from the legacy information system.</p>
+    <ul lang="fr"><li>Développement des flux de données.</li><li>Rédaction des spécifications techniques et des tests, correction des anomalies.</li><li>Tableaux de bord de data visualisation.</li><li>Intégration continue et optimisation des performances.</li><li>Reporting et gestion de projet.</li></ul>
+    <ul lang="en"><li>Development of data flows.</li><li>Technical specifications and tests, bug fixing.</li><li>Data visualisation dashboards.</li><li>Continuous integration and performance tuning.</li><li>Reporting and project management.</li></ul>
+    </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Suivre l’activité de la police scientifique avec Qlik</h3>
+    <h3 lang="en">Tracking forensic police activity with Qlik</h3>
+    <p class="when" lang="fr">Service de police scientifique · Data Visualisation · oct. – déc. 2022</p>
+    <p class="when" lang="en">Forensic police service · Data Visualisation · Oct – Dec 2022</p>
+    <ul class="chips"><li>Qlik Sense</li></ul></summary>
+    <div class="body">
+    <p lang="fr"><b>Contexte.</b> Une application Qlik pour analyser et tracer l’activité de la police scientifique, de la scène d’infraction aux grands fichiers nationaux, dont la criminalistique numérique et la balistique de proximité.</p>
+    <p lang="en"><b>Context.</b> A Qlik application to analyse and trace forensic police activity, from the crime scene to national databases, including digital forensics and local ballistics.</p>
+    <ul lang="fr"><li>Collecte des besoins et conception de l’architecture de données.</li><li>Développement de l’application de data visualisation.</li><li>Mise en œuvre de la sécurité, tests et corrections.</li></ul>
+    <ul lang="en"><li>Requirements gathering and data architecture design.</li><li>Development of the data visualisation application.</li><li>Security implementation, testing and fixes.</li></ul>
+    </div>
+  </details>
+
+  <details class="case"><summary><h3 lang="fr">Résoudre les problèmes de performance d’un outil d’intégration</h3>
+    <h3 lang="en">Fixing performance issues in a data integration tool</h3>
+    <p class="when" lang="fr">Coopérative agricole · Data Intégration · mai – sept. 2022</p>
+    <p class="when" lang="en">Agricultural cooperative · Data Integration · May – Sep 2022</p>
+    <ul class="chips"><li>Azure Data Factory</li><li>Informatica Cloud (IICS)</li></ul></summary>
+    <div class="body">
+    <p lang="fr"><b>Contexte.</b> La coopérative rencontrait des problèmes de performance avec Pentaho Data Integration. Mission de cadrage pour optimiser les flux et définir l’évolution de l’architecture.</p>
+    <p lang="en"><b>Context.</b> The cooperative faced performance issues with Pentaho Data Integration. A scoping mission to optimise data flows and define the architecture’s next steps.</p>
+    <ul lang="fr"><li>Analyse des besoins et de l’existant.</li><li>Étude de marché et réalisation de POCs.</li><li>Conseil technique, benchmark de solutions et comptes rendus.</li></ul>
+    <ul lang="en"><li>Needs and existing-system analysis.</li><li>Market study and proofs of concept.</li><li>Technical advice, solution benchmark and reports.</li></ul>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2 lang="fr">Compétences</h2><h2 lang="en">Skills</h2>
+  <div class="grid">
+    <div><h3 lang="fr">Intégration et MDM</h3><h3 lang="en">Integration and MDM</h3>
+      <p>Talend (ESB, Cloud), Talaxie, Blueway, Semarchy/Stambia, Boomi, Informatica Cloud, Azure Data Factory</p></div>
+    <div><h3 lang="fr">DevOps et visualisation</h3><h3 lang="en">DevOps and visualisation</h3>
+      <p>GitLab CI/CD, Rundeck, Azure DevOps, Qlik Sense, Power BI, Postman, Bruno</p></div>
+    <div><h3 lang="fr">Données et langages</h3><h3 lang="en">Data and languages</h3>
+      <p>SQL, JSON, XML, Python (notions), PostgreSQL, MySQL, SQL Server, Oracle, API REST</p></div>
+    <div><h3 lang="fr">Gouvernance et méthodes</h3><h3 lang="en">Governance and methods</h3>
+      <p lang="fr">Modélisation, droits et accès, spécifications, Agile (Scrum, Kanban)</p>
+      <p lang="en">Modelling, access rights, specifications, Agile (Scrum, Kanban)</p></div>
   </div>
+</section>
 
-  <section>
-    <h2 lang="fr">Études de cas</h2>
-    <h2 lang="en">Case studies</h2>
+<section>
+  <h2 lang="fr">Certifications</h2><h2 lang="en">Certifications</h2>
+  <ul class="facts"><li>Microsoft AZ-900</li><li>Talend Data Fabric Explorer</li><li>Talend Studio Explorer</li><li>Boomi Associate Developer</li><li>Denodo Architect Associate</li></ul>
+</section>
+</main>
 
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Faire dialoguer les applications d’une école de commerce</h3>
-        <h3 lang="en">Connecting the applications of a business school</h3>
-        <p class="when" lang="fr">École de commerce · Data Cloud · depuis avril 2026, à distance</p>
-        <p class="when" lang="en">Business school · Data Cloud · since April 2026, remote</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Talend ESB</li><li>Talend Cloud (TMC)</li><li>Salesforce</li><li>SQL Server</li><li>Jira</li></ul>
-        <p lang="fr"><b>Contexte.</b> Intégration des données des grands domaines métiers : étudiants, scolarité, finance, contrats fournisseurs, conventions partenaires et cours.</p>
-        <p lang="en"><b>Context.</b> Data integration across the main business domains: students, academic records, finance, supplier contracts, partner agreements and courses.</p>
-        <ul lang="fr">
-          <li>Développement et maintenance des flux sur Talend ESB et Talend Cloud, entre Salesforce, SQL Server et d’autres applications.</li>
-          <li>Déploiement sur 5 environnements (dev à production), résolution d’incidents et optimisation des performances.</li>
-          <li>Conception et optimisation des interfaces entre les applications du système d’information.</li>
-          <li>Suivi des développements et des livraisons via Jira.</li>
-        </ul>
-        <ul lang="en">
-          <li>Development and maintenance of flows on Talend ESB and Talend Cloud, between Salesforce, SQL Server and other applications.</li>
-          <li>Deployment across 5 environments (dev to production), incident resolution and performance tuning.</li>
-          <li>Design and optimisation of the interfaces between the information system’s applications.</li>
-          <li>Tracking of developments and deliveries in Jira.</li>
-        </ul>
-      </div>
-    </details>
+<footer>
+  <span lang="fr">Pour échanger sur un projet : </span><span lang="en">To discuss a project: </span>
+  <a href="mailto:prenom.nom@exemple.com">prenom.nom@exemple.com</a>
+</footer>
+</div>
 
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Des téléservices pour les usagers, sur Blueway</h3>
-        <h3 lang="en">Online public services for citizens, on Blueway</h3>
-        <p class="when" lang="fr">Métropole · Développement de portails</p>
-        <p class="when" lang="en">Metropolitan authority · Portal development</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Blueway</li></ul>
-        <ul lang="fr">
-          <li>Réalisation de portails Blueway intégrant les formulaires de la gestion de la relation usager (GRU).</li>
-          <li>Développement de téléservices pour les usagers.</li>
-        </ul>
-        <ul lang="en">
-          <li>Built Blueway portals integrating citizen relationship management (GRU) forms.</li>
-          <li>Developed online services for citizens.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Un MDM et des portails sur
+<script>
+(function(){
+  var btns=document.querySelectorAll('.sw button'),t={fr:'HTA – Data Engineer / MDM',en:'HTA – Data Engineer / MDM'};
+  function set(l){
+    document.documentElement.lang=l;document.title=t[l];
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
+    try{localStorage.setItem('lang',l)}catch(e){}
+  }
+  var s=null;try{s=localStorage.getItem('lang')}catch(e){}
+  set(s||((navigator.language||'fr').slice(0,2)==='en'?'en':'fr'));
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.l)})});
+})();
+</script>
+</body>
+</html>
