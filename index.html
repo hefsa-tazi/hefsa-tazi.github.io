@@ -3,789 +3,147 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hefsa Tazi – MDM | Data Integration | Data Ops</title>
+<title>Hafsa Tazi – MDM | Data Integration | Data Ops</title>
+<meta name="description" content="Hafsa Tazi – Data Engineer : MDM, intégration de données, Data Ops. Études de cas, compétences, certifications.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Newsreader:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Newsreader:wght@500;600&display=swap" rel="stylesheet">
 <style>
-/* =========================================
-   STYLE INTÉGRÉ — THÈME BOURGOGNE
-   ========================================= */
-:root {
-  color-scheme: light;
-  --bg: #F8F1F2;
-  --surface: #FFFFFF;
-  --ink: #292127;
-  --muted: #75636B;
-  --line: #E8D8DD;
-  --accent: #641E32;
-  --accent-hover: #8F3049;
-  --accent-light: #F3E2E7;
-  --coral: #D9A0A9;
-  --gradient-accent: linear-gradient(110deg, #641E32 0%, #B34D68 100%);
-  --shadow-sm: 0 4px 14px rgba(100, 30, 50, 0.06);
-  --shadow-md: 0 12px 32px rgba(100, 30, 50, 0.10);
-  --shadow-lg: 0 20px 50px rgba(100, 30, 50, 0.15);
-  --radius-md: 18px;
-  --radius-lg: 26px;
-  --container: 1040px;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  padding: 0;
-  background: radial-gradient(circle at 95% 3%, rgba(217, 160, 169, 0.16), transparent 25rem), var(--bg);
-  color: var(--ink);
-  font-family: "Figtree", sans-serif;
-  font-size: 16px;
-  line-height: 1.75;
-}
-
-img { max-width: 100%; }
-a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
-a:hover { color: var(--accent-hover); }
-
-/* GESTION DES LANGUES FR / EN */
-html[lang=fr] [lang=en], html[lang=en] [lang=fr] { display: none !important; }
-
-/* CONTENEUR */
-.container {
-  width: min(var(--container), calc(100% - 48px));
-  margin-inline: auto;
-}
-
-/* NAVIGATION */
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding-block: 20px;
-  border-bottom: 1px solid var(--line);
-}
-
-.logo {
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.email-link {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-.sw {
-  display: flex;
-  gap: 4px;
-}
-
-.lang-toggle {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 8px 14px;
-  background: var(--surface);
-  color: var(--accent);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.lang-toggle[aria-pressed="true"], .lang-toggle:hover {
-  background: var(--accent);
-  color: #FFFFFF;
-}
-
-/* HERO SECTION */
-.hero {
-  position: relative;
-  padding: 60px 0;
-}
-
-.hero-layout {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.hero-text {
-  flex: 1;
-  min-width: 280px;
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 16px;
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hero-dot {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--accent-hover);
-  box-shadow: 0 0 0 5px rgba(143, 48, 73, 0.12);
-}
-
-h1 {
-  margin: 0 0 10px;
-  font-family: "Newsreader", Georgia, serif;
-  font-size: clamp(36px, 5vw, 54px);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.1;
-}
-
-.subtitle {
-  font-size: clamp(20px, 3vw, 26px);
-  font-family: "Newsreader", Georgia, serif;
-  color: var(--muted);
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
-.gradient-text {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.lead {
-  margin: 0 0 24px;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.75;
-}
-
-/* INFORMATIONS RAPIDES */
-.facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.facts li {
-  padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.75);
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-/* PHOTO DE PROFIL */
-.profile-frame {
-  position: relative;
-  width: 240px;
-  padding: 10px;
-  border: 1px solid rgba(100, 30, 50, 0.12);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  box-shadow: var(--shadow-lg);
-  transform: rotate(2deg);
-  flex-shrink: 0;
-  margin: 0 auto;
-}
-
-.profile-glow {
-  position: absolute;
-  z-index: -1;
-  top: -18px;
-  right: -18px;
-  width: 95px;
-  height: 95px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #D9A0A9, #8F3049);
-  opacity: 0.85;
-}
-
-.profile-photo {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 18px;
-  background: var(--accent-light);
-  object-fit: cover;
-  object-position: center;
-}
-
-.profile-caption {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 4px 4px;
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-}
-
-/* SECTIONS ET ÉTUDES DE CAS */
-section {
-  position: relative;
-  padding-block: 48px;
-  border-top: 1px solid var(--line);
-}
-
-section h2 {
-  margin: 0 0 24px;
-  color: var(--accent);
-  font-family: "Newsreader", Georgia, serif;
-  font-size: clamp(26px, 3.5vw, 36px);
-  font-weight: 600;
-}
-
-.case {
-  margin: 16px 0;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-}
-
-.case summary {
-  position: relative;
-  padding: 22px 54px 22px 24px;
-  background: linear-gradient(110deg, var(--surface), var(--accent-light));
-  cursor: pointer;
-  list-style: none;
-}
-
-.case summary::-webkit-details-marker { display: none; }
-
-.case summary::after {
-  content: "+";
-  position: absolute;
-  top: 50%;
-  right: 22px;
-  display: grid;
-  width: 28px;
-  height: 28px;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #FFFFFF;
-  font-size: 20px;
-  transform: translateY(-50%);
-}
-
-.case[open] summary::after { content: "−"; }
-
-.case summary h3 {
-  margin: 0;
-  color: var(--ink);
-  font-size: 18px;
-}
-
-.case summary p {
-  margin: 7px 0 0;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.case-content {
-  padding: 16px 24px 24px;
-}
-
-.case ul {
-  padding-left: 20px;
-  color: var(--muted);
-}
-
-.case li { margin-block: 6px; }
-
-/* TAGS / CHIPS */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 14px 0;
-  padding: 0;
-  list-style: none;
-}
-
-.chips li {
-  padding: 6px 12px;
-  border: 1px solid #E8CCD4;
-  border-radius: 999px;
-  background: var(--accent-light);
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-/* GRILLES */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-}
-
-.grid > div {
-  padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-}
-
-.grid > div h3 {
-  margin: 0 0 10px;
-  color: var(--accent);
-  font-size: 18px;
-}
-
-.grid > div p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* FOOTER */
-footer {
-  margin-top: 30px;
-  padding: 30px 0 40px;
-  border-top: 2px solid var(--accent);
-  color: var(--muted);
-  font-size: 13px;
-}
-
-footer a { color: var(--accent); font-weight: 600; }
+:root{color-scheme:light;--bg:#F8F1F2;--surface:#FFF;--ink:#292127;--muted:#75636B;--line:#E8D8DD;--accent:#641E32;--accent-hover:#8F3049;--accent-light:#F3E2E7;--grad:linear-gradient(110deg,#641E32 0%,#B34D68 100%);--sh-sm:0 4px 14px rgba(100,30,50,.06);--sh-lg:0 20px 50px rgba(100,30,50,.15);--r-md:18px;--r-lg:26px;--container:1040px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 95% 3%,rgba(217,160,169,.16),transparent 25rem),var(--bg);color:var(--ink);font:16px/1.75 "Figtree",system-ui,sans-serif}
+img{max-width:100%}a{color:var(--accent);text-decoration:none;transition:color .2s}a:hover{color:var(--accent-hover)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+html[lang=fr] [lang=en],html[lang=en] [lang=fr]{display:none!important}
+.container{width:min(var(--container),calc(100% - 48px));margin-inline:auto}
+nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-block:20px;border-bottom:1px solid var(--line)}
+.logo{font:600 22px "Newsreader",Georgia,serif;color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.nav-link,.email-link{font-size:14px;font-weight:600}
+.sw{display:flex;gap:4px}
+.lang-toggle{border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:var(--surface);color:var(--accent);font:600 14px "Figtree",sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.lang-toggle[aria-pressed="true"],.lang-toggle:hover{background:var(--accent);color:#fff}
+.hero{padding:60px 0}
+.hero-layout{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.hero-text{flex:1;min-width:280px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 16px;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.hero-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent-hover);box-shadow:0 0 0 5px rgba(143,48,73,.12)}
+h1{margin:0 0 10px;font:600 clamp(36px,5vw,54px)/1.1 "Newsreader",Georgia,serif;letter-spacing:-.035em}
+.subtitle{font:500 clamp(20px,3vw,26px) "Newsreader",Georgia,serif;color:var(--muted);margin-bottom:20px}
+.gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{margin:0 0 24px;color:var(--muted);font-size:17px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.facts li{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.75);color:var(--accent);font-size:12px;font-weight:600}
+.profile-frame{position:relative;width:240px;padding:10px;border:1px solid rgba(100,30,50,.12);border-radius:var(--r-lg);background:var(--surface);box-shadow:var(--sh-lg);transform:rotate(2deg);flex-shrink:0;margin:0 auto}
+.profile-glow{position:absolute;z-index:-1;top:-18px;right:-18px;width:95px;height:95px;border-radius:25px;background:linear-gradient(135deg,#D9A0A9,#8F3049);opacity:.85}
+.profile-photo{display:block;width:100%;aspect-ratio:4/5;border-radius:18px;background:var(--accent-light);object-fit:cover}
+.profile-caption{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 4px 4px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.09em}
+section{padding-block:48px;border-top:1px solid var(--line)}
+section h2{margin:0 0 24px;color:var(--accent);font:600 clamp(26px,3.5vw,36px) "Newsreader",Georgia,serif}
+.case{margin:16px 0;overflow:hidden;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);box-shadow:var(--sh-sm)}
+.case summary{position:relative;padding:22px 54px 22px 24px;background:linear-gradient(110deg,var(--surface),var(--accent-light));cursor:pointer;list-style:none}
+.case summary::-webkit-details-marker{display:none}
+.case summary::after{content:"+";position:absolute;top:50%;right:22px;display:grid;width:28px;height:28px;place-items:center;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;transform:translateY(-50%)}
+.case[open] summary::after{content:"−"}
+.case summary h3{margin:0;color:var(--ink);font-size:18px}
+.case summary p{margin:7px 0 0;font-size:13px;color:var(--muted)}
+.case-content{padding:16px 24px 24px}
+.case-content h4{margin:18px 0 4px;color:var(--accent);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.case-content p{margin:0 0 8px}
+.case ul{padding-left:20px;color:var(--muted);margin:6px 0}
+.case li{margin-block:6px}
+.chips,.case .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:0;list-style:none}
+.chips li,.case .chips li{margin:0;padding:6px 12px;border:1px solid #E8CCD4;border-radius:999px;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:600}
+.skill-group{margin-bottom:22px}.skill-group h3{margin:0 0 10px;color:var(--ink);font-size:15px;font-weight:700}
+footer{margin-top:30px;padding:30px 0 40px;border-top:2px solid var(--accent);color:var(--muted);font-size:13px}
+footer a{font-weight:600}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}a,.lang-toggle{transition:none}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="container">
-    <nav>
-      <span class="logo">HTA</span>
-      <div class="nav-right">
-		  	  <a href="https://www.linkedin.com/in/hafsa-tazi-el-bellar/" target="_blank" class="nav-link">LinkedIn</a>
-
-        <a href="mailto:htazi894@gmail.com" class="email-link">hefsatazi@gmail.com</a>
-        <div class="sw" role="group" aria-label="Langue / Language">
-          <button type="button" class="lang-toggle" data-l="fr" aria-pressed="true">FR</button>
-          <button type="button" class="lang-toggle" data-l="en" aria-pressed="false">EN</button>
-        </div>
-      </div>
-    </nav>
-  </div>
-</header>
-
+<header><div class="container"><nav>
+<span class="logo">HTA</span>
+<div class="nav-right">
+<a href="https://www.linkedin.com/in/hafsa-tazi-el-bellar/" target="_blank" rel="noopener" class="nav-link">LinkedIn</a>
+<a href="mailto:htazi894@gmail.com" class="email-link">hefsatazi@gmail.com</a>
+<div class="sw" role="group" aria-label="Langue / Language"><button type="button" class="lang-toggle" data-l="fr" aria-pressed="true">FR</button><button type="button" class="lang-toggle" data-l="en" aria-pressed="false">EN</button></div>
+</div></nav></div></header>
 <main class="container">
-  <div class="hero">
-    <div class="hero-layout">
-      <div class="hero-text">
-        <div class="eyebrow">
-          <span class="hero-dot"></span>
-          <span>Data Enthusiast</span>
-        </div>
-        
-        <h1>Hefsa Tazi</h1>
-        <div class="subtitle"><span class="gradient-text">MDM</span> | Data Integration | Data Ops</div>
-        
-        <p class="lead" lang="fr">J’aide les organisations à structurer, fiabiliser et gouverner leurs données de référence : modélisation, flux ETL, migration de plateformes et automatisation des déploiements.</p>
-        <p class="lead" lang="en">I help organisations structure, secure and govern their reference data: modelling, ETL pipelines, platform migrations and deployment automation.</p>
-        
-        <ul class="facts">
-          <li lang="fr">5 ans d’expérience</li><li lang="en">5 years of experience</li>
-          <li lang="fr">Ingénieur, Polytech Marseille</li><li lang="en">Engineer, Polytech Marseille</li>
-          <li lang="fr">Français, anglais (TOEIC 825), arabe</li><li lang="en">French, English (TOEIC 825), Arabic</li>
-        </ul>
-      </div>
+<div class="hero"><div class="hero-layout">
+<div class="hero-text">
+<div class="eyebrow"><span class="hero-dot"></span><span>Data Enthusiast</span></div>
+<h1>Hafsa Tazi</h1>
+<div class="subtitle"><span class="gradient-text">MDM</span> | Data Integration | Data Ops</div>
+<p class="lead" lang="fr">J’aide les organisations à structurer, fiabiliser et gouverner leurs données de référence : modélisation, flux ETL, migration de plateformes et automatisation des déploiements.</p>
+<p class="lead" lang="en">I help organisations structure, secure and govern their reference data: modelling, ETL pipelines, platform migrations and deployment automation.</p>
+<ul class="facts"><li lang="fr">5 ans d’expérience</li><li lang="en">5 years of experience</li><li lang="fr">Ingénieur, Polytech Marseille</li><li lang="en">Engineer, Polytech Marseille</li><li lang="fr">Français, anglais (TOEIC 825), arabe</li><li lang="en">French, English (TOEIC 825), Arabic</li></ul>
+</div>
+<div class="profile-frame"><div class="profile-glow"></div><img src="photo.png" alt="Hafsa Tazi" class="profile-photo"><div class="profile-caption"><span class="hero-dot"></span><span lang="fr">DISPONIBLE</span><span lang="en">AVAILABLE</span></div></div>
+</div></div>
+<section>
+<h2 lang="fr">Études de cas</h2><h2 lang="en">Case studies</h2>
 
-      <div class="profile-frame">
-        <div class="profile-glow"></div>
-        <img src="photo.png" alt="Hafsa Tazi" class="profile-photo">
-        <div class="profile-caption">
-          <span class="hero-dot"></span>
-          <span>DISPONIBLE</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section>
-    <h2 lang="fr">Études de cas</h2>
-    <h2 lang="en">Case studies</h2>
-
- 
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Dématérialisation des démarches des communes avec Blueway Phoenix</h3>
-        <h3 lang="en">Digitising municipal services with Blueway Phoenix</h3>
-        <p class="when" lang="fr">Métropole · Consultante Data/MDM · 2026</p>
-        <p class="when" lang="en">Metropolitan authority · Data/MDM Consultant · 2026</p>
-      </summary>
-       <div class="case-content">
-    <ul class="chips">
-      <li>Blueway Phoenix BPM</li>
-      <li>Blueway APIM</li>
-      <li>Forum GRU</li> <li>Blueway Phoenix ESB</li> <li>API REST</li> <li>Phoenix SOAP</li> <li>HTML/CSS</li>
-    </ul>
-   <p lang="fr"><b>Contexte:</b> Le projet s’inscrit dans une démarche de modernisation des services publics locaux, avec pour objectif de dématérialiser les démarches administratives et de faciliter les interactions entre les communes et les usagers. Il repose sur la gestion des processus métier, l’intégration des applications et la personnalisation des portails de services en ligne.</p>
-
-    <p lang="en"><b>Context:</b> The project supports the modernisation of local public services by digitising administrative procedures and improving interactions between municipalities and citizens. It involves business process management, application integration and the customisation of online service portals.</p>
-
-    <ul lang="fr">
-      <li>Développement et évolution des téléservices destinés aux différentes communes.</li>
-      <li>Utilisation de Blueway Phoenix BPM dans le cadre des développements liés aux processus métiers.</li>
-      <li>Intervention sur les échanges applicatifs et les API avec Blueway APIM.</li>
-      <li>Utilisation de Forum GRU pour la gestion des formulaires et des parcours de relation usager.</li>
-      <li>Analyse, diagnostic et résolution des bugs affectant les téléservices.</li>
-      <li>Vérification du bon fonctionnement des fonctionnalités après correction des anomalies.</li>
-    </ul>
-
-    <ul lang="en">
-      <li>Development and enhancement of online services for the different municipalities.</li>
-      <li>Use of Blueway Phoenix BPM for business process-related development.</li>
-      <li>Work on application exchanges and APIs with Blueway APIM.</li>
-      <li>Use of Forum GRU to support forms and citizen service journeys.</li>
-      <li>Analysis, diagnosis and resolution of issues affecting online services.</li>
-      <li>Verification of functionality after bug fixes.</li>
-    </ul>
-  </div>
-</details>
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">MDM, portails sur mesure et intégration d’API</h3>
-        <h3 lang="en">Master Data Management, Custom Portals and API Integration</h3>
-		
-        <p class="when" lang="fr">Département · Consultante Data/MDM · 2026</p>
-        <p class="when" lang="en">Local authority · Data/MDM Consultant · 2026</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Blueway Phoenix MDM</li> <li>Blueway Phoenix ESB</li> <li>API REST</li>   <li>Dbeaver</li>  <li>SQL</li>   <li>HTML/CSS</li>   </ul>
-			 <p lang="fr"><b>Contexte:</b> Le projet vise à centraliser et fiabiliser les données de référence d’une collectivité territoriale grâce à une solution de Master Data Management (MDM). Il comprend également la mise en place de portails adaptés aux besoins métier et l’intégration des systèmes afin d’améliorer la cohérence, la disponibilité et la circulation des données.</p>
-
-    <p lang="en"><b>Context:</b> The project aims to centralise and improve the reliability of a local authority's master data through a Master Data Management (MDM) solution. It also involves developing business-specific portals and integrating systems to improve data consistency, availability and exchange.</p>
-
-        <ul lang="fr">
-          <li>Mise en place du MDM sur Blueway pour les données de référence.</li>
-          <li>Développement de portails sur mesure pour les équipes.</li>
-        </ul>
-        <ul lang="en">
-          <li>Set up the MDM on Blueway for reference data.</li>
-          <li>Developed tailor-made portals for the teams.</li>
-        </ul>
-      </div>
-    </details>
-	
-	   <details class="case">
-      <summary>
-        <h3 lang="fr">Interconnexion des applications métiers</h3>
-        <h3 lang="en">Business Application Integration</h3>
-        <p class="when" lang="fr">École de commerce ·Consultante Data Cloud · 2026</p>
-        <p class="when" lang="en">Business school · Data Cloud Consultant ·  2026</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Talend ESB</li><li>Talend Cloud (TMC)</li><li>Salesforce</li><li>SQL Server</li><li>Jira</li><li>API REST</li><li> API SOAP</li></ul>
-        <p lang="fr"><b>Contexte.</b> Intégration des données des grands domaines métiers : étudiants, scolarité, finance, contrats fournisseurs, conventions partenaires et cours.</p>
-        <p lang="en"><b>Context.</b> Data integration across the main business domains: students, academic records, finance, supplier contracts, partner agreements and courses.</p>
-        <ul lang="fr">
-          <li>Développement et maintenance des flux sur Talend ESB et Talend Cloud, entre Salesforce, SQL Server et d’autres applications.</li>
-          <li>Déploiement sur 5 environnements (dev à production), résolution d’incidents et optimisation des performances.</li>
-          <li>Conception et optimisation des interfaces entre les applications du système d’information.</li>
-          <li>Suivi des développements et des livraisons via Jira.</li>
-        </ul>
-        <ul lang="en">
-          <li>Development and maintenance of flows on Talend ESB and Talend Cloud, between Salesforce, SQL Server and other applications.</li>
-          <li>Deployment across 5 environments (dev to production), incident resolution and performance tuning.</li>
-          <li>Design and optimisation of the interfaces between the information system’s applications.</li>
-          <li>Tracking of developments and deliveries in Jira.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Modernisation d'un référentiel public avec Blueway Phoenix</h3>
-        <h3 lang="en">Data Repository Modernisation with Blueway Phoenix</h3>
-        <p class="when" lang="fr">Établissement public · Consultante Data/MDM · 2025</p>
-        <p class="when" lang="en">French public body · Data/MDM Consultant · 2025</p>
-      </summary>
-       <div class="case-content">
-    <ul class="chips">
-      <li>Blueway Phoenix</li>
-      <li>Blueway ESB/MDM</li>
-      <li>Data Governance</li>
-      <li>Data Migration</li> <li>Dbeaver</li>  <li>SQL</li> 
-    </ul>
-
-        <p lang="fr"><b>Contexte.</b> Dans le cadre de la modernisation de son système d’information, un organisme public engage la migration de son référentiel de données vers Blueway Phoenix. Le projet vise à structurer et fiabiliser les données, à gérer leur historisation et leurs relations hiérarchiques, ainsi qu’à intégrer les règles métier et les mécanismes de contrôle nécessaires à leur qualité.</p>
-        <p lang="en"><b>Context.</b> As part of its information system modernisation, a public sector organisation is migrating its data repository to Blueway Phoenix. The project focuses on structuring and improving data quality, maintaining historical records and hierarchical relationships, and implementing the business rules and validation mechanisms required for reliable data management.</p>
-       <ul lang="fr">
-      <li>Analyse des besoins métiers, étude des spécifications existantes et identification des écarts avec la solution cible.</li>
-      <li>Rédaction de spécifications techniques détaillées et conception de prototypes d’écrans pour validation avec les métiers.</li>
-      <li>Modélisation des référentiels et développement d’écrans personnalisés pour le MDM.</li>
-      <li>Mise en place de mécanismes d’historisation annuelle pour consulter les données applicables aux années passées.</li>
-      <li>Gestion des dépendances entre dénominations parentes et enfants.</li>
-      <li>Gestion des statuts et des périodes de validité pour l’activation et la désactivation des enregistrements.</li>
-      <li>Implémentation de workflows de validation, de règles de gestion et de contrôles d’unicité.</li>
-      <li>Intégration des flux d’ingestion, de transformation et de chargement des données dans Phoenix.</li>
-    </ul>
-         <ul lang="en">
-      <li>Business requirements analysis, review of existing specifications and gap analysis against the target solution.</li>
-      <li>Detailed technical specifications and screen prototypes for business validation.</li>
-      <li>Reference data modelling and development of customised MDM screens.</li>
-      <li>Implementation of yearly historisation to consult data applicable to previous years.</li>
-      <li>Management of parent-child dependencies between designations.</li>
-      <li>Management of record statuses and validity periods for activation and deactivation.</li>
-      <li>Implementation of validation workflows, business rules and uniqueness checks.</li>
-      <li>Integration of data ingestion, transformation and loading flows into Phoenix.</li>
-    </ul>
-      </div>
-    </details>
-
-
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Automatisation des déploiements ETL avec une chaîne CI/CD</h3>
-        <h3 lang="en">ETL Deployment Automation with CI/CD</h3>
-        <p class="when" lang="fr">Centre de production d’une ESN · Consultante Data/DevOps · 2025</p>
-        <p class="when" lang="en">IT services production centre · Data/DevOps Consultant · 2025</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Talaxie</li><li>Talend Open Studio</li><li>GitLab CI/CD</li><li>Rundeck</li> <li>API REST</li>  <li>API SOAP</li> <li>Python</li> </ul>
-        <p lang="fr"><b>Contexte.</b> Le projet vise à moderniser et automatiser le déploiement des traitements ETL. Il comprend la migration de jobs existants, la mise en place d’une chaîne CI/CD et l’automatisation des opérations de déploiement afin de réduire les interventions manuelles et de fiabiliser les mises en production.</p>
-        <p lang="en"><b>Context.</b> The project aims to modernise and automate ETL job deployments. It involves migrating existing jobs, implementing a CI/CD pipeline and automating deployment operations to reduce manual intervention and improve release reliability.</p>
-        <ul lang="fr">
-          <li>Migration de jobs ETL vers Talaxie.</li>
-          <li>Chaîne CI/CD automatisée et généralisée, déploiement sur Rundeck avec désactivation automatique des anciennes versions.</li>
-          <li>Moins de temps manuel en mise en production, base réutilisable pour les futurs projets.</li>
-        </ul>
-        <ul lang="en">
-          <li>ETL job migration to Talaxie.</li>
-          <li>Automated, generalised CI/CD pipeline, deployment to Rundeck with automatic deactivation of old versions.</li>
-          <li>Less manual work at release time, reusable foundation for future projects.</li>
-        </ul>
-      </div>
-    </details>
-	
-	    <details class="case">
-      <summary>
-        <h3 lang="fr">Migration d’un MDM coûteux à une plateforme plus agile</h3>
-        <h3 lang="en">Moving from a costly MDM to a more agile platform</h3>
-        <p class="when" lang="fr">Groupe de l’événementiel · Consultante Data/MDM · 2024</p>
-        <p class="when" lang="en">Events group · Data/MDM Consultant · 2024</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Phoenix MDM</li><li>Phoenix ESB</li><li>Semarchy XDM</li><li>Talend Open Studio v8</li><li>Keycloak</li><li>Jira</li><li>Postman</li><li>API REST</li><li>API RPC</li></ul>
-        <p lang="fr"><b>Contexte.</b> Le projet consiste à migrer une plateforme de Master Data Management de Semarchy XDM V22 vers Blueway Phoenix V7.0.1  afin de moderniser l’architecture d’intégration et de pérenniser la gestion des données de référence. Il comprend la reconstruction des flux, l’intégration avec les applications existantes et la sécurisation des échanges entre systèmes.</p>
-        <p lang="en"><b>Context.</b> The project involves migrating a Master Data Management platform from Semarchy XDM V22 to Blueway Phoenix V7.0.1 to modernise the integration architecture and ensure sustainable master data management. It includes rebuilding integration flows, connecting existing applications and securing data exchanges between systems.</p>
-        <ul lang="fr">
-          <li>Conception de l’architecture d’intégration et développement des flux entre sources et destinations.</li>
-          <li>Recette fonctionnelle d’un projet Odoo, avec validation des échanges bidirectionnels par API RPC.</li>
-          <li>Gestion des droits via Keycloak, écrans personnalisés selon les retours utilisateurs.</li>
-          <li>Documentation complète, guides de bonnes pratiques, formation de deux collaborateurs et encadrement d’une alternante.</li>
-        </ul>
-        <ul lang="en">
-          <li>Integration architecture design and development of flows between sources and destinations.</li>
-          <li>Functional acceptance of an Odoo project, with bidirectional API RPC exchanges validated.</li>
-          <li>Access management through Keycloak, custom screens shaped by user feedback.</li>
-          <li>Full documentation, best-practice guides, training of two colleagues and mentoring of a work-study student.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Intégration des données et suivi de la production</h3>
-        <h3 lang="en">Data Integration and Production Monitoring</h3>
-        <p class="when" lang="fr">Fabricant de cartes électroniques · Consultante Data/MDM · 2023</p>
-        <p class="when" lang="en">Electronics manufacturer · Data/MDM Consultant · 2023</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Talend Open Studio v8 </li><li>Qlik Sense</li> <li>SAGE</li><li>4D</li> <li>MySQL</li></ul>
-        <p lang="fr"><b>Contexte.</b> Le projet vise à centraliser les données issues de plusieurs systèmes métiers, notamment les outils de gestion, au sein d’un entrepôt de données. L’objectif est d’automatiser les flux d’alimentation et de mettre à disposition des tableaux de bord permettant de suivre l’activité et d’améliorer la visibilité sur la production.</p>
-        <p lang="en"><b>Context.</b> The project aims to consolidate data from multiple business systems, including management software, into a data warehouse. It focuses on automating data pipelines and providing dashboards to monitor business activity and improve production visibility.</p>
-        <ul lang="fr">
-          <li>Flux ETL nettoyant les données brutes issues de SAGE et 4D, chargées dans un entrepôt décisionnel.</li>
-          <li>Automatisation de l’intégration, tests et appui à la recette métier.</li>
-          <li>Tableaux de bord interactifs Qlik Sense pour les équipes.</li>
-        </ul>
-        <ul lang="en">
-          <li>ETL flows cleaning raw data from SAGE and 4D, loaded into a decision-support warehouse.</li>
-          <li>Integration automation, testing and support for business acceptance.</li>
-          <li>Interactive Qlik Sense dashboards for the teams.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Migration de données vers un CRM sur mesure dans le cloud</h3>
-        <h3 lang="en">Cloud Data Migration for a Custom CRM</h3>
-        <p class="when" lang="fr">Groupe de protection sociale · Data Engineer Cloud · 2023</p>
-        <p class="when" lang="en">Social protection group · Cloud Data Engineer · 2023</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Azure Data Factory</li><li>Synapse</li><li>Qlik Sense</li><li>Jira</li><li>Oracle</li> <li>Azure DevOps</li></ul>
-        <p lang="fr"><b>Contexte.</b> Le projet accompagne la modernisation du système de gestion de la relation client à travers la migration des données d’un système historique vers un CRM sur mesure hébergé dans le cloud. Il vise à garantir la qualité et la cohérence des données migrées, tout en facilitant leur exploitation dans le nouvel environnement.</p>
-        <p lang="en"><b>Context.</b> BThe project supports the modernisation of customer relationship management by migrating data from a legacy system to a custom cloud-based CRM. It aims to ensure the quality and consistency of migrated data while enabling its effective use in the new environment.</p>
-        <ul lang="fr">
-          <li>Développement des flux de données.</li>
-          <li>Rédaction des spécifications techniques et des tests, correction des anomalies.</li>
-          <li>Tableaux de bord de data visualisation.</li>
-          <li>Intégration continue et optimisation des performances.</li>
-          <li>Reporting et gestion de projet.</li>
-        </ul>
-        <ul lang="en">
-          <li>Development of data flows.</li>
-          <li>Technical specifications and tests, bug fixing.</li>
-          <li>Data visualisation dashboards.</li>
-          <li>Continuous integration and performance tuning.</li>
-          <li>Reporting and project management.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Suivre l’activité de la police scientifique avec QlikSense</h3>
-        <h3 lang="en">Tracking forensic police activity with QlikSense</h3>
-        <p class="when" lang="fr">Service de police scientifique · Consultante Data Visualisation · 2022</p>
-        <p class="when" lang="en">Forensic police service · Data Visualisation Consultant · 2022</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Qlik Sense</li></ul>
-        <p lang="fr"><b>Contexte.</b> Le projet consiste à développer une application décisionnelle permettant de suivre l’activité d’un laboratoire de police scientifique, depuis la réception des prélèvements liés aux scènes d’infraction jusqu’à la constitution des dossiers nationaux. Les indicateurs couvrent notamment les activités de criminalistique numérique et de balistique de proximité.</p>
-        <p lang="en"><b>Context.</b> The project involves developing a business intelligence application to monitor forensic laboratory activities, from the receipt of evidence collected at crime scenes to the preparation of national case files. Key areas include digital forensics and close-range ballistics.</p>
-        <ul lang="fr">
-          <li>Collecte des besoins et conception de l’architecture de données.</li>
-          <li>Développement de l’application de data visualisation.</li>
-          <li>Mise en œuvre de la sécurité, tests et corrections.</li>
-        </ul>
-        <ul lang="en">
-          <li>Requirements gathering and data architecture design.</li>
-          <li>Development of the data visualisation application.</li>
-          <li>Security implementation, testing and fixes.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="case">
-      <summary>
-        <h3 lang="fr">Évaluation et comparaison de solutions d’intégration de données</h3>
-        <h3 lang="en">ata Integration Solutions Assessment and Benchmarking</h3>
-        <p class="when" lang="fr">Coopérative agricole · Consultante Data Intégration · 2022</p>
-        <p class="when" lang="en">Agricultural cooperative · Data Integration Consultant · 2022</p>
-      </summary>
-      <div class="case-content">
-        <ul class="chips"><li>Azure Data Factory</li><li>Informatica Cloud (IICS)</li><li>Boomi</li><li>Big Query</li><li>Talend Open Studio</li><li>Semarchy XDI (ex Stambia)</li><li>PowerBI</li><li>MySQL</li><li>PostgreSQL</li><li>Oracle</li><li>Fivetran</li></ul>
-        <p lang="fr"><b>Contexte.</b> Face aux limites de performance rencontrées avec la solution d’intégration existante, le projet vise à évaluer des alternatives technologiques adaptées aux besoins de l’entreprise. La démarche repose sur l’analyse des exigences, la réalisation de preuves de concept (POC), la comparaison des solutions et la formulation de recommandations.</p>
-        <p lang="en"><b>Context.</b> n response to performance limitations with the existing data integration solution, the project aims to assess alternative technologies suited to the company's needs. The approach includes requirements analysis, proof-of-concept development, solution benchmarking and recommendations.</p>
-        <ul lang="fr">
-          <li>Analyse des besoins et de l’existant.</li>
-          <li>Étude de marché et réalisation de POCs.</li>
-          <li>Conseil technique, benchmark de solutions et comptes rendus.</li>
-        </ul>
-        <ul lang="en">
-          <li>Needs and existing-system analysis.</li>
-          <li>Market study and proofs of concept.</li>
-          <li>Technical advice, solution benchmark and reports.</li>
-        </ul>
-      </div>
-    </details>
-  </section>
-
-  <section>
-    <h2 lang="fr">Compétences</h2>
-    <h2 lang="en">Skills</h2>
-    <div class="grid">
-      <div>
-        <h3 lang="fr">Intégration et MDM</h3><h3 lang="en">Integration and MDM</h3>
-        <p>Talend (ESB, Cloud), Talaxie, Blueway, Semarchy/Stambia, Boomi, Informatica Cloud, Azure Data Factory</p>
-      </div>
-      <div>
-        <h3 lang="fr">DevOps et visualisation</h3><h3 lang="en">DevOps and visualisation</h3>
-        <p>GitLab CI/CD, Rundeck, Azure DevOps, Qlik Sense, Power BI, Postman, Bruno</p>
-      </div>
-      <div>
-        <h3 lang="fr">Données et langages</h3><h3 lang="en">Data and languages</h3>
-        <p>SQL, JSON, XML, Python (notions), PostgreSQL, MySQL, SQL Server, Oracle, API REST</p>
-      </div>
-      <div>
-        <h3 lang="fr">Gouvernance et méthodes</h3><h3 lang="en">Governance and methods</h3>
-        <p lang="fr">Modélisation, droits et accès, spécifications, Agile (Scrum, Kanban)</p>
-        <p lang="en">Modelling, access rights, specifications, Agile (Scrum, Kanban)</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2 lang="fr">Certifications</h2>
-    <h2 lang="en">Certifications</h2>
-    <ul class="facts">
-      <li>Microsoft AZ-900</li>
-      <li>Talend Data Fabric Explorer</li>
-      <li>Talend Studio Explorer</li>
-      <li>Boomi Associate Developer</li>
-      <li>Denodo Architect Associate</li>
-    </ul>
-  </section>
+<details class="case"><summary><h3 lang="fr">Dématérialisation des démarches des communes</h3><h3 lang="en">Digitisation of municipal procedures</h3><p lang="fr">Métropole · Développement et maintenance de téléservices · 2026</p><p lang="en">Metropolitan authority · Online services development and maintenance · 2026</p></summary>
+<div class="case-content"><ul class="chips"><li>Blueway Phoenix BPM</li><li>Blueway APIM</li><li>Forum GRU</li><li>Blueway Phoenix ESB</li><li>API REST</li><li>API SOAP</li><li>HTML/CSS</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Le projet s’inscrit dans une démarche de modernisation des services publics locaux : dématérialiser les démarches administratives et faciliter les interactions entre les communes et les usagers. Il repose sur la gestion des processus métier, l’intégration des applications et la personnalisation des portails de services en ligne.</p><p lang="en">The project supports the modernisation of local public services by digitising administrative procedures and improving interactions between municipalities and citizens. It involves business process management, application integration and the customisation of online service portals.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Développement et évolution des téléservices destinés aux différentes communes.</li><li>Développements liés aux processus métiers avec Blueway Phoenix BPM.</li><li>Échanges applicatifs et API avec Blueway APIM.</li><li>Forum GRU pour la gestion des formulaires et des parcours de relation usager.</li><li>Analyse, diagnostic et résolution des bugs affectant les téléservices.</li><li>Vérification du bon fonctionnement des fonctionnalités après correction des anomalies.</li></ul><ul lang="en"><li>Development and enhancement of online services for the different municipalities.</li><li>Business process development with Blueway Phoenix BPM.</li><li>Application exchanges and APIs with Blueway APIM.</li><li>Forum GRU for forms and citizen service journeys.</li><li>Analysis, diagnosis and resolution of issues affecting online services.</li><li>Verification of functionality after bug fixes.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Des téléservices à la disposition des usagers, avec la gestion du back-office assurée par le gestionnaire.</p><p lang="en">Online services available to citizens, with back-office management handled by the administrator.</p></div></details>
+<details class="case"><summary><h3 lang="fr">MDM, portails sur mesure et intégration d’API</h3><h3 lang="en">Master Data Management, custom portals and API integration</h3><p lang="fr">Département · MDM et portails · 2026</p><p lang="en">Local authority · MDM and portals · 2026</p></summary>
+<div class="case-content"><ul class="chips"><li>Blueway Phoenix MDM</li><li>Blueway Phoenix ESB</li><li>API REST</li><li>JSON</li><li>DBeaver</li><li>SQL</li><li>HTML/CSS</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Le projet vise à centraliser et fiabiliser les données de référence d’une collectivité territoriale grâce à une solution de Master Data Management (MDM). Il comprend aussi la mise en place de portails adaptés aux besoins métier et l’intégration des systèmes, pour améliorer la cohérence, la disponibilité et la circulation des données.</p><p lang="en">The project aims to centralise and improve the reliability of a local authority’s master data through a Master Data Management (MDM) solution. It also involves building business-specific portals and integrating systems to improve data consistency, availability and exchange.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Mise en place du MDM sur Blueway pour les données de référence.</li><li>Exposition des données de personnes (agents, élus, personnel hors département, agents non rémunérés) par des flux JSON paramétrables et paginés (entité, date, taille et numéro de page).</li><li>Développement de portails sur mesure pour les équipes, dont un portail de gestion des populations non rémunérées : accueil personnalisé, création et recherche de dossiers.</li><li>Mise en forme des portails par classes CSS réutilisables, pour une interface homogène.</li><li>Documentation des structures de données pour faciliter leur reprise par les équipes consommatrices.</li></ul><ul lang="en"><li>Set-up of the MDM on Blueway for reference data.</li><li>Exposure of people data (staff, elected officials, non-department staff, unpaid staff) through configurable, paginated JSON flows (entity, date, page size and number).</li><li>Development of tailor-made portals for the teams, including a portal to manage unpaid populations: personalised home page, record creation and search.</li><li>Portal styling through reusable CSS classes, for a consistent interface.</li><li>Documentation of the data structures so consuming teams can pick them up easily.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Un MDM opérationnel et des portails à destination des usagers.</p><p lang="en">An operational MDM and portals for citizens.</p></div></details>
+<details class="case"><summary><h3 lang="fr">Interconnexion des applications métiers</h3><h3 lang="en">Business application integration</h3><p lang="fr">École de commerce · Data Cloud · 2026</p><p lang="en">Business school · Data Cloud · 2026</p></summary>
+<div class="case-content"><ul class="chips"><li>Talend ESB</li><li>Talend Cloud (TMC)</li><li>Salesforce</li><li>SQL Server</li><li>Jira</li><li>API REST</li><li>API SOAP</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Intégration des données des grands domaines métiers : étudiants, scolarité, finance, contrats fournisseurs, conventions partenaires et cours.</p><p lang="en">Data integration across the main business domains: students, academic records, finance, supplier contracts, partner agreements and courses.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Développement et maintenance des flux sur Talend ESB et Talend Cloud, entre Salesforce, SQL Server et d’autres applications.</li><li>Déploiement sur 5 environnements (dev, test, recette, préprod, production).</li><li>Analyse et résolution d’incidents, optimisation des performances des flux.</li><li>Conception et optimisation des interfaces entre les applications du système d’information.</li><li>Suivi des développements et des livraisons via Jira.</li></ul><ul lang="en"><li>Development and maintenance of flows on Talend ESB and Talend Cloud, between Salesforce, SQL Server and other applications.</li><li>Deployment across 5 environments (dev, test, acceptance, pre-production, production).</li><li>Incident analysis and resolution, performance tuning of the flows.</li><li>Design and optimisation of the interfaces between the information system’s applications.</li><li>Tracking of developments and deliveries in Jira.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Des flux d’intégration assurant les échanges entre les applications du système d’information.</p><p lang="en">Integration flows handling the exchanges between the information system’s applications.</p></div></details>
+<details class="case"><summary><h3 lang="fr">Modernisation d’un référentiel de données public</h3><h3 lang="en">Modernisation of a public data repository</h3><p lang="fr">Établissement public · Consultant Data / MDM · 2025</p><p lang="en">French public body · Data / MDM consultant · 2025</p></summary>
+<div class="case-content"><ul class="chips"><li>Blueway Phoenix</li><li>Blueway ESB/MDM</li><li>Data Governance</li><li>Data Migration</li><li>DBeaver</li><li>SQL</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Dans le cadre de la modernisation de son système d’information, un organisme public migre son référentiel de données vers Blueway Phoenix. Le projet vise à structurer et fiabiliser les données, gérer leur historisation et leurs relations hiérarchiques, et intégrer les règles métier et contrôles nécessaires à leur qualité.</p><p lang="en">As part of its information system modernisation, a public sector organisation is migrating its data repository to Blueway Phoenix. The project focuses on structuring and improving data quality, maintaining historical records and hierarchical relationships, and implementing the business rules and validation mechanisms required for reliable data management.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Analyse des besoins métiers, étude des spécifications existantes et identification des écarts avec la solution cible.</li><li>Spécifications techniques détaillées et prototypes d’écrans pour validation avec les métiers.</li><li>Modélisation des référentiels et développement d’écrans personnalisés pour le MDM.</li><li>Historisation annuelle pour consulter les données applicables aux années passées.</li><li>Gestion des dépendances entre dénominations parentes et enfants.</li><li>Gestion des statuts et des périodes de validité pour l’activation et la désactivation des enregistrements.</li><li>Workflows de validation, règles de gestion et contrôles d’unicité.</li><li>Préparation des éléments nécessaires à la migration des données et aux développements futurs.</li><li>Intégration des flux d’ingestion, de transformation et de chargement des données dans Phoenix.</li></ul><ul lang="en"><li>Business requirements analysis, review of existing specifications and gap analysis against the target solution.</li><li>Detailed technical specifications and screen prototypes for business validation.</li><li>Reference data modelling and development of customised MDM screens.</li><li>Yearly historisation to consult data applicable to previous years.</li><li>Management of parent-child dependencies between designations.</li><li>Management of record statuses and validity periods for activation and deactivation.</li><li>Validation workflows, business rules and uniqueness checks.</li><li>Preparation of the elements needed for the data migration and future developments.</li><li>Integration of data ingestion, transformation and loading flows into Phoenix.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Un MDM robuste, répondant aux règles de gestion du client.</p><p lang="en">A robust MDM that meets the client’s business rules.</p></div></details>
+<details class="case"><summary><h3 lang="fr">Automatisation des déploiements ETL avec une chaîne CI/CD</h3><h3 lang="en">ETL deployment automation with CI/CD</h3><p lang="fr">Centre de production d’une ESN · Consultant Data / DevOps · 2025</p><p lang="en">IT services production centre · Data / DevOps consultant · 2025</p></summary>
+<div class="case-content"><ul class="chips"><li>Talaxie</li><li>Talend Open Studio</li><li>GitLab CI/CD</li><li>Rundeck</li><li>API REST</li><li>API SOAP</li><li>Python</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Moderniser et automatiser le déploiement des traitements ETL : migration de jobs existants, chaîne CI/CD et automatisation des opérations, pour réduire les interventions manuelles et fiabiliser les mises en production.</p><p lang="en">Modernise and automate ETL job deployments: migration of existing jobs, a CI/CD pipeline and automated deployment operations, to reduce manual work and make releases more reliable.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Migration de jobs ETL vers Talaxie.</li><li>Chaîne CI/CD automatisée et généralisée, déploiement sur Rundeck avec désactivation automatique des anciennes versions.</li><li>Évaluation de la compatibilité avec les pratiques DevOps existantes (GitLab, Rundeck) et analyse comparative des alternatives aux fonctionnalités de Talend.</li><li>Moins de temps manuel en mise en production, base réutilisable pour les futurs projets.</li></ul><ul lang="en"><li>ETL job migration to Talaxie.</li><li>Automated, generalised CI/CD pipeline, deployment to Rundeck with automatic deactivation of old versions.</li><li>Assessment of compatibility with existing DevOps practices (GitLab, Rundeck) and comparative analysis of alternatives to Talend features.</li><li>Less manual work at release time, reusable foundation for future projects.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Une stack open source équivalente à Talend Management Console (TMC).</p><p lang="en">An open-source stack equivalent to Talend Management Console (TMC).</p></div></details>
+<details class="case"><summary><h3 lang="fr">Migration d’un MDM coûteux vers une plateforme plus agile</h3><h3 lang="en">Migration from a costly MDM to a more agile platform</h3><p lang="fr">Groupe de l’événementiel · Consultant Data / MDM · 2024</p><p lang="en">Events group · Data / MDM consultant · 2024</p></summary>
+<div class="case-content"><ul class="chips"><li>Phoenix MDM</li><li>Phoenix ESB</li><li>Semarchy XDM</li><li>Talend Open Studio v8</li><li>Keycloak</li><li>Jira</li><li>Postman</li><li>API REST</li><li>API RPC</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Migration d’une plateforme de Master Data Management de Semarchy XDM V22 vers Blueway Phoenix V7.0.1, pour moderniser l’architecture d’intégration et pérenniser la gestion des données de référence : reconstruction des flux, intégration avec les applications existantes et sécurisation des échanges. Travail avec l’équipe de l’éditeur (chef de projet MDM, développeur ESB, développeur écrans), l’équipe fonctionnelle, l’équipe CRM interne et le prestataire du projet Odoo, pour une intégration fluide entre les MDM et le CRM/ERP.</p><p lang="en">Migration of a Master Data Management platform from Semarchy XDM V22 to Blueway Phoenix V7.0.1 to modernise the integration architecture and secure long-term reference data management: rebuilding flows, connecting existing applications and securing data exchanges. Work alongside the vendor team (MDM project manager, ESB developer, screens developer), the functional team, the internal CRM team and the Odoo provider, for a smooth integration between the MDMs and the CRM/ERP.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Analyse des besoins en données et conception de l’architecture d’intégration.</li><li>Développement des flux d’intégration sur Blueway, selon les sources et destinations, avec mécanismes d’automatisation.</li><li>Qualité, sécurité et intégrité des données tout au long du processus d’intégration.</li><li>Montée en compétence sur Semarchy XDM pour exécuter les flux MDM existants avant la migration.</li><li>Personnalisation autonome des écrans Blueway selon les retours utilisateurs : évolutions, UX et parcours.</li><li>Recette fonctionnelle du projet Odoo avec les équipes métier, avec validation des échanges bidirectionnels par API / connecteurs (RPC).</li><li>Gestion des droits et accès via Keycloak, avec des profils alignés sur les rôles métier.</li><li>Gestion des incidents et anomalies, tickets auprès de l’éditeur Blueway et dans Jira.</li><li>Documentation exhaustive : spécifications fonctionnelles et techniques, manuels utilisateurs, guides de bonnes pratiques, comptes rendus.</li><li>Accompagnement de deux nouveaux collaborateurs sur Blueway.</li><li>Encadrement d’une alternante : compréhension du projet, prise en main de Talend et Blueway, fondamentaux du MDM.</li><li>Mise en place de trois référentiels MDM interconnectés et des portails métiers associés.</li><li>Formalisation de normes de qualité, de sécurité et d’intégrité des données.</li></ul><ul lang="en"><li>Data needs analysis and design of the integration architecture.</li><li>Development of integration flows on Blueway across sources and destinations, with automation mechanisms.</li><li>Data quality, security and integrity throughout the integration process.</li><li>Upskilling on Semarchy XDM to run the existing MDM flows before the migration.</li><li>Independent customisation of Blueway screens from user feedback: enhancements, UX and user journeys.</li><li>Functional acceptance of the Odoo project with business teams, validating bidirectional exchanges through APIs / connectors (RPC).</li><li>Access management through Keycloak, with profiles aligned to business roles.</li><li>Incident and defect handling, tickets with the vendor Blueway and in Jira.</li><li>Comprehensive documentation: functional and technical specifications, user manuals, best-practice guides, reports.</li><li>Coaching of two new colleagues on Blueway.</li><li>Mentoring of a work-study student: project understanding, Talend and Blueway, MDM fundamentals.</li><li>Set-up of three interconnected MDM reference repositories and the associated business portals.</li><li>Formalisation of data quality, security and integrity standards.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Établissement d’une infrastructure robuste d’intégration de données.</p><p lang="en">Establishment of a robust data integration infrastructure.</p></div></details>
+<details class="case"><summary><h3 lang="fr">Intégration des données et suivi de la production</h3><h3 lang="en">Data integration and production monitoring</h3><p lang="fr">Fabricant de cartes électroniques · Consultant Data / MDM · 2023</p><p lang="en">Electronics manufacturer · Data / MDM consultant · 2023</p></summary>
+<div class="case-content"><ul class="chips"><li>Talend Open Studio v8</li><li>Qlik Sense</li><li>SAGE</li><li>4D</li><li>MySQL</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Centraliser dans un entrepôt de données les informations issues de plusieurs systèmes métiers, automatiser les flux d’alimentation et fournir des tableaux de bord pour suivre l’activité et améliorer la visibilité sur la production. Deux projets menés en autonomie, sous la responsabilité d’un chef de projet et en lien direct avec les responsables métier : un tableau de bord RH « Comex » et une application d’optimisation des temps de fabrication, avec Qlik Sense.</p><p lang="en">Consolidate data from several business systems in a data warehouse, automate the loading pipelines and provide dashboards to monitor activity and improve production visibility. Two projects run independently, under a project manager and in direct contact with business owners: an HR “Comex” dashboard and a manufacturing-time optimisation application, built with Qlik Sense.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Flux ETL nettoyant les données brutes issues de SAGE et 4D, chargées dans un entrepôt décisionnel.</li><li>Automatisation de l’intégration, tests et appui à la recette métier.</li><li>Création d’une source unique et fiable de données pour l’entreprise, optimisation des flux ETL.</li><li>Tableaux de bord interactifs Qlik Sense pour les équipes.</li><li>Personnalisation des tableaux de bord.</li></ul><ul lang="en"><li>ETL flows cleaning raw data from SAGE and 4D, loaded into a decision-support warehouse.</li><li>Integration automation, testing and support for business acceptance.</li><li>Creation of a single, reliable source of data for the company, ETL flow optimisation.</li><li>Interactive Qlik Sense dashboards for the teams.</li><li>Dashboard customisation.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Mise en place et déploiement du tableau de bord RH « Comex » et de l’application d’optimisation des temps de fabrication.</p><p lang="en">Delivery and deployment of the HR “Comex” dashboard and the manufacturing-time optimisation application.</p></div></details>
+<details class="case"><summary><h3 lang="fr">Migration de données vers un CRM sur mesure dans le cloud</h3><h3 lang="en">Cloud data migration for a custom CRM</h3><p lang="fr">Groupe de protection sociale · Data Engineer Cloud · 2023</p><p lang="en">Social protection group · Cloud Data Engineer · 2023</p></summary>
+<div class="case-content"><ul class="chips"><li>Azure Data Factory</li><li>Synapse</li><li>Qlik Sense</li><li>Jira</li><li>Oracle</li><li>Azure DevOps</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Accompagner la modernisation de la gestion de la relation client en migrant les données d’un système historique vers un CRM sur mesure hébergé dans le cloud, en garantissant la qualité et la cohérence des données migrées. Intégration à l’équipe Data (un chef de projet et cinq développeurs, dont un à l’étranger, en anglais) et collaboration avec l’équipe fonctionnelle (un DBA et cinq AMOA). Objectif : migration vers une nouvelle architecture de SID.</p><p lang="en">Support the modernisation of customer relationship management by migrating data from a legacy system to a custom cloud-based CRM, ensuring the quality and consistency of migrated data. Part of the Data team (a project manager and five developers, one of them abroad, working in English) alongside the functional team (a DBA and five business analysts). Goal: migration to a new SID architecture.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Développement des flux de données.</li><li>Rédaction des spécifications techniques et des tests, correction des anomalies.</li><li>Tableaux de bord de data visualisation.</li><li>Intégration continue et optimisation des performances.</li><li>Reporting et gestion de projet.</li><li>Déploiement en livraison continue avec Azure DevOps et supervision des exécutions.</li></ul><ul lang="en"><li>Development of data flows.</li><li>Technical specifications and tests, bug fixing.</li><li>Data visualisation dashboards.</li><li>Continuous integration and performance tuning.</li><li>Reporting and project management.</li><li>Continuous delivery with Azure DevOps and monitoring of executions.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Mise en production effective, avec validation des tests de bon fonctionnement.</p><p lang="en">Successful go-live, with functional tests validated.</p></div></details>
+<details class="case"><summary><h3 lang="fr">Pilotage de l’activité de la police scientifique</h3><h3 lang="en">Monitoring of forensic police activity</h3><p lang="fr">Service de police scientifique · Data Visualisation · 2022</p><p lang="en">Forensic police service · Data Visualisation · 2022</p></summary>
+<div class="case-content"><ul class="chips"><li>Qlik Sense</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Développer une application décisionnelle pour suivre l’activité d’un laboratoire de police scientifique, de la réception des prélèvements liés aux scènes d’infraction jusqu’à la constitution des dossiers nationaux, notamment en criminalistique numérique et balistique de proximité. Travail en autonomie sur l’ensemble des aspects techniques, avec une cheffe de projet pour la coordination globale.</p><p lang="en">Develop a business intelligence application to monitor forensic laboratory activity, from the receipt of evidence collected at crime scenes to the preparation of national case files, including digital forensics and close-range ballistics. Independent work on all technical aspects, with a project manager for overall coordination.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Collecte des besoins et conception de l’architecture de données.</li><li>Développement de l’application de data visualisation.</li><li>Mise en œuvre de la sécurité, tests et corrections.</li><li>Visualisations personnalisées avec Qlik Sense Desktop.</li></ul><ul lang="en"><li>Requirements gathering and data architecture design.</li><li>Development of the data visualisation application.</li><li>Security implementation, testing and fixes.</li><li>Custom visualisations with Qlik Sense Desktop.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Application Qlik déployée et tableaux de bord opérationnels.</p><p lang="en">Qlik application deployed, with operational dashboards.</p></div></details>
+<details class="case"><summary><h3 lang="fr">Évaluation et comparaison de solutions d’intégration de données</h3><h3 lang="en">Data integration solutions assessment and benchmarking</h3><p lang="fr">Coopérative agricole · Data Intégration · 2022</p><p lang="en">Agricultural cooperative · Data Integration · 2022</p></summary>
+<div class="case-content"><ul class="chips"><li>Azure Data Factory</li><li>Informatica Cloud (IICS)</li><li>Boomi</li><li>BigQuery</li><li>Talend Open Studio</li><li>Semarchy xDI (ex Stambia)</li><li>Power BI</li><li>MySQL</li><li>PostgreSQL</li><li>Oracle</li><li>Fivetran</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Face aux limites de performance de la solution d’intégration existante, évaluer des alternatives adaptées aux besoins de l’entreprise : analyse des exigences, preuves de concept (POC), comparaison des solutions et recommandations. Travail avec le directeur de l’entité Data Management du cabinet, un consultant en gouvernance des données, les commerciaux des solutions étudiées et le responsable DSI de la coopérative. Objectif : aide au choix d’une solution d’intégration de données.</p><p lang="en">In response to performance limitations with the existing data integration solution, assess alternative technologies suited to the company’s needs: requirements analysis, proofs of concept, solution benchmarking and recommendations. Work with the head of the firm’s Data Management practice, a data governance consultant, the vendors’ sales teams and the cooperative’s IT director. Goal: help choosing a data integration solution.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Analyse des besoins et de l’existant.</li><li>Étude de marché et réalisation de POCs.</li><li>Conseil technique, benchmark de solutions et comptes rendus.</li><li>Réunions avec le client et les éditeurs.</li><li>POCs sur Azure Data Factory et Informatica, avec synthèse des rapports de POC.</li></ul><ul lang="en"><li>Needs and existing-system analysis.</li><li>Market study and proofs of concept.</li><li>Technical advice, solution benchmark and reports.</li><li>Meetings with the client and vendors.</li><li>Proofs of concept on Azure Data Factory and Informatica, with a summary of the POC reports.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Benchmark des solutions disponibles, pour des décisions éclairées sur les outils les mieux adaptés.</p><p lang="en">Benchmark of the available solutions, enabling informed decisions on the best-suited tools.</p></div></details>
+<details class="case"><summary><h3 lang="fr">Études comparatives et support avant-vente</h3><h3 lang="en">Comparative studies and pre-sales support</h3><p lang="fr">Société de conseil · Data Intégration · 2022</p><p lang="en">Consulting firm · Data Integration · 2022</p></summary>
+<div class="case-content"><ul class="chips"><li>Boomi (iPaaS)</li><li>Talend Open Studio</li><li>Informatica Cloud (IICS)</li><li>Azure Data Factory</li><li>Semarchy xDI (Stambia)</li><li>Matillion</li><li>Jitterbit</li><li>Blueway</li><li>Fivetran</li></ul>
+<h4 lang="fr">Contexte</h4><h4 lang="en">Context</h4><p lang="fr">Réalisation d’études comparatives sur les solutions d’intégration de données, support avant-vente et consolidation de l’offre commerciale.</p><p lang="en">Comparative studies of data integration solutions, pre-sales support and consolidation of the commercial offer.</p>
+<h4 lang="fr">Missions</h4><h4 lang="en">What I did</h4><ul lang="fr"><li>Études comparatives des solutions d’intégration de données.</li><li>Prise en main et manipulation des technologies.</li><li>Support avant-vente.</li><li>Consolidation de l’offre commerciale.</li><li>Technologies étudiées : Boomi, Talend, Informatica, Azure Data Factory, Stambia, Matillion, Jitterbit, Blueway, Fivetran.</li><li>Technologies manipulées : Boomi, Talend, Informatica, Azure Data Factory, Stambia.</li></ul><ul lang="en"><li>Comparative studies of data integration solutions.</li><li>Hands-on work with the technologies.</li><li>Pre-sales support.</li><li>Consolidation of the commercial offer.</li><li>Technologies studied: Boomi, Talend, Informatica, Azure Data Factory, Stambia, Matillion, Jitterbit, Blueway, Fivetran.</li><li>Technologies hands-on: Boomi, Talend, Informatica, Azure Data Factory, Stambia.</li></ul><h4 lang="fr">Résultats</h4><h4 lang="en">Results</h4><p lang="fr">Étude comparative détaillée pour définir des offres ciblées et renforcer les supports avant-vente.</p><p lang="en">Detailed comparative study to define targeted offers and strengthen pre-sales materials.</p></div></details>
+</section>
+<section>
+<h2 lang="fr">Compétences</h2><h2 lang="en">Skills</h2>
+<div class="skill-group"><h3 lang="fr">Plateformes et outils d’intégration</h3><h3 lang="en">Integration platforms and tools</h3><ul class="chips"><li>Blueway Phoenix (MDM, ESB, BPM, APIM)</li><li>Forum GRU</li><li>Talend (Open Studio, ESB, Cloud)</li><li>Talaxie</li><li>Semarchy (XDM, xDI)</li><li>Boomi</li><li>Informatica Cloud (IICS)</li><li>Azure Data Factory</li><li>Azure Synapse</li></ul></div><div class="skill-group"><h3 lang="fr">DevOps, données et langages</h3><h3 lang="en">DevOps, data and languages</h3><ul class="chips"><li>GitLab CI/CD</li><li>Azure DevOps</li><li>Rundeck</li><li>Keycloak</li><li>Qlik Sense</li><li>Power BI</li><li>SQL</li><li>JSON</li><li>XML</li><li>Python (notions)</li><li>API REST / SOAP / RPC</li><li>PostgreSQL</li><li>SQL Server</li><li>Oracle</li></ul></div><div class="skill-group"><h3 lang="fr">Compétences fonctionnelles</h3><h3 lang="en">Functional skills</h3><ul class="chips"><li lang="fr">Modélisation de référentiels de données</li><li lang="en">Reference data modelling</li><li lang="fr">Gouvernance des données</li><li lang="en">Data governance</li><li lang="fr">Écrans personnalisés pour MDM</li><li lang="en">Custom MDM screens</li><li lang="fr">Migration de jobs ETL</li><li lang="en">ETL job migration</li><li lang="fr">Automatisation CI/CD</li><li lang="en">CI/CD automation</li><li lang="fr">Architectures d’intégration</li><li lang="en">Integration architectures</li><li lang="fr">Spécifications techniques et recette</li><li lang="en">Technical specifications and acceptance testing</li><li lang="fr">Gestion des droits et accès</li><li lang="en">Access management</li><li lang="fr">Encadrement et formation</li><li lang="en">Mentoring and training</li><li lang="fr">Conseil technique et benchmark</li><li lang="en">Technical advice and benchmarking</li><li lang="fr">Agile (Scrum, Kanban)</li><li lang="en">Agile (Scrum, Kanban)</li></ul></div>
+</section>
+<section>
+<h2 lang="fr">Certifications</h2><h2 lang="en">Certifications</h2>
+<ul class="facts"><li>Microsoft AZ-900</li><li>Talend Data Fabric Explorer</li><li>Talend Studio Explorer</li><li>Boomi Associate Developer</li><li>Denodo Architect Associate</li></ul>
+</section>
 </main>
-
-<footer>
-  <div class="container">
-    <span lang="fr">Pour échanger sur un projet : </span><span lang="en">To discuss a project: </span>
-    <a href="mailto:htazi894@gmail.com">hefsatazi@gmail.com</a>
-  </div>
-</footer>
-
+<footer><div class="container"><span lang="fr">Pour échanger sur un projet : </span><span lang="en">To discuss a project: </span><a href="mailto:htazi894@gmail.com">hefsatazi@gmail.com</a></div></footer>
 <script>
 (function(){
-  var btns = document.querySelectorAll('.lang-toggle'),
-      t = {fr: 'Hefsa Tazi – MDM | Data Integration | Data Ops', en: 'Hefsa Tazi – MDM | Data Integration | Data Ops'};
-      
-  function setLang(l){
-    document.documentElement.lang = l;
-    document.title = t[l];
-    btns.forEach(function(b){
-      b.setAttribute('aria-pressed', b.getAttribute('data-l') === l);
-    });
-    try{ localStorage.setItem('lang', l); } catch(e){}
-  }
-  
-  var saved = null;
-  try{ saved = localStorage.getItem('lang'); } catch(e){}
-  setLang(saved || ((navigator.language || 'fr').slice(0,2) === 'en' ? 'en' : 'fr'));
-  
-  btns.forEach(function(b){
-    b.addEventListener('click', function(){
-      setLang(b.getAttribute('data-l'));
-    });
-  });
+var btns=document.querySelectorAll('.lang-toggle');
+function setLang(l){document.documentElement.lang=l;btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-l')===l)});try{localStorage.setItem('lang',l)}catch(e){}}
+var saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
+setLang(saved||((navigator.language||'fr').slice(0,2)==='en'?'en':'fr'));
+btns.forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-l'))})});
 })();
 </script>
 </body>
